@@ -1,0 +1,51 @@
+{
+  "name": "req-ts",
+  "version": "0.1.0-alpha.1",
+  "description": "Shorten URL's code for rqe.es",
+  "main": "bin/www",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gtrabanco/rqe.git"
+  },
+  "keywords": [
+    "short",
+    "url",
+    "req",
+    "ts"
+  ],
+  "author": "Gabriel Trabanco Llano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gtrabanco/rqe/issues"
+  },
+  "homepage": "https://github.com/gtrabanco/rqe#readme",
+  "engines": {
+    "node": "~6.9.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/ejs": "^2.3.33",
+    "@types/express": "^4.0.33",
+    "@types/express-serve-static-core": "^4.0.39",
+    "@types/mime": "0.0.29",
+    "@types/node": "^6.0.46",
+    "@types/serve-static": "^1.7.31",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-develop-server": "^0.5.2",
+    "gulp-mocha": "^3.0.1",
+    "gulp-typescript": "^3.1.2",
+    "typescript": "^2.0.8",
+    "typings": "^2.0.0"
+  }
+}
