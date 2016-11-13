@@ -5,13 +5,37 @@ var ts = require('gulp-typescript');
 var clean = require('gulp-clean');
 var server = require('gulp-develop-server');
 var mocha = require('gulp-mocha');
+var fs = require('fs');
 
 var serverTS = ["**/*.ts", "!node_modules/**", '!bin/**'];
+
+var tsOptions = {
+    module: "commonjs",
+    "noImplicitAny": true
+};
+
+try {
+    tsOptions = JSON.parse(fs.readFileSync('tsconfig.json').toString()).compilerOptions;
+} catch (e) {
+    console.log('loaded default ts options', e)
+}
+
+/*
+ var serverTS = ["** /*.ts", "!node_modules/**", '!bin/**'];
+ var tsProject = ts.createProject('tsconfig.json');
+
+ gulp.task('ts', ['clean'], function() {
+    var tsResult = tsProject.src(serverTS) // instead of gulp.src(...)
+        .pipe(tsProject());
+
+    return tsResult.js.pipe(gulp.dest('release'));
+});
+ */
 
 gulp.task('ts', ['clean'], function() {
     return gulp
         .src(serverTS, {base: './'})
-        .pipe(ts({ module: 'commonjs', noImplicitAny: true }))
+        .pipe(ts(tsOptions))
         .pipe(gulp.dest('./'));
 });
 

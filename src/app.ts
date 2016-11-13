@@ -1,14 +1,12 @@
-/// <reference path="_all.d.ts" />
-
 "use strict";
 
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
 import logger = require("morgan");
-
-import * as indexRoute from "./routes/index";
-import * as config from "../config/index";
+import {Index} from "./routes/index";
+import {options} from "../config/index";
+import { UrlModel, Url } from './models/url/model';
 
 /**
  * The server.
@@ -61,10 +59,8 @@ class Server {
         router = express.Router();
 
         //create routes
-        var index: indexRoute.Index = new indexRoute.Index();
-
-        //home page
-        router.get("/", index.index.bind(index.index));
+        router.use(Index.routes());
+        //router.use(ApiV1IndexRoute.routes());
 
         //use router middleware
         this.app.use(router);
@@ -87,7 +83,7 @@ class Server {
         this.app.use(logger("dev"));
 
         //Configuration
-        this.app.set("config", config);
+        this.app.set("config", options);
 
         //mount json form parser
         this.app.use(bodyParser.json());

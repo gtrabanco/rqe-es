@@ -1,6 +1,51 @@
 import fs = require("fs");
 
+import { ConnectionOptions } from 'mongoose';
 
+/*
+interface Configuration {
+    alphaber:string,
+    minLength:number
+    port:number;
+    views: {
+        engine:string,
+        dir:string,
+    },
+    database: {
+        connectionStr:string,
+        options: ConnectionOptions,
+
+    },
+    server: {
+        schema:string,
+        vhost: {
+            domain:string,
+            routesFolder:string
+        }[],
+    }
+}
+*/
+
+export var options = {
+    port: 3320,
+    publicURL: 'http://localhost:3000',
+    views: {
+        engine: "ejs",
+        dir: "src/views"
+    },
+    database: {
+        connectionString: "mongodb://127.0.0.1:27017/rqe",
+        options: {}
+    },
+    server: {
+        schema: "http",
+        vhost: {}
+    },
+    alphabet: "abcdefhijkmnopqrsuvwxyzACBDEFHJKMNPQRSUVWXYZ123456789",
+    minLength: "4"
+};
+
+/*
 let files = fs.readdirSync("./");
 let conf:any = new Array<Object>();
 
@@ -31,5 +76,4 @@ switch (conf.length) {
         });
         break;
 }
-
-export = conf;
+*/
