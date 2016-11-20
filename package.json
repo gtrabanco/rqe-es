@@ -1,12 +1,13 @@
 {
   "name": "req-ts",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-beta.1",
   "description": "Shorten URL's code for rqe.es",
   "main": "bin/www",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startdb": "mongod --dbpath data/db",
-    "start": "PORT=2180 NODE_ENV=development ./node_modules/.bin/nodemon ."
+    "start": "PORT=2180 NODE_ENV=production node .",
+    "startdev": "PORT=3000 NODE_ENV=development ./node_modules/.bin/nodemon ."
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 {
-  "port": 3320,
+  "port": 2180,
   "views": {
     "engine": "ejs",
     "dir": "src/views"
