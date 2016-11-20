@@ -28,13 +28,13 @@ interface Configuration {
 
 export var options = {
     port: 3320,
-    publicURL: 'http://localhost:3000',
+    publicURL: 'https://rqe.es',
     views: {
         engine: "ejs",
         dir: "src/views"
     },
     database: {
-        connectionString: "mongodb://127.0.0.1:27017/rqe",
+        connectionString: "mongodb://mymongo:27017/rqe",
         options: {}
     },
     server: {

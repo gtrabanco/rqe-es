@@ -8,14 +8,13 @@ exit 0
 fi
 
 export APP_PORT=27017
-export DOCKER_IMAGE=mongodb
+export DOCKER_IMAGE=mongo
 export IMAGE_TAG=3
 export CONTAINER_RAM=1G
 export DOCKER_BIN=/usr/bin/docker
 
 export DOCKER_VOLUME=$1
-export CONTAINER_NAME="$2_$3"
-export CONTAINER_PORT=$2
+export CONTAINER_NAME=$2
 export CONTAINER_PORT=$3
 
 $DOCKER_BIN stop -t 0 $CONTAINER_NAME &> /dev/null

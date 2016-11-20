@@ -20,7 +20,7 @@ export CONTAINER_PORT=$3 #27017
 
 echo "Creating volume..."
 
-$DOCKER_BIN volume create $VOLUME_NAME
+$DOCKER_BIN volume create --name $VOLUME_NAME
 
 sleep 1
 
