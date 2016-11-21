@@ -13,8 +13,6 @@ export class Index {
     static routes():Router {
         return  Router().get('/:strId?', async (req:Request, res:Response) => {
 
-            let recaptcha = new Recaptcha(options.recaptcha.publicKey, options.recaptcha.privateKey);
-
             let strId = req.params.strId;
 
             if(!strId || !checkValidStrId(strId)) {
@@ -32,7 +30,7 @@ export class Index {
                     data: {
                         message: "There is no url fot the id \"" + strId + "\""
                     },
-                    recaptcha: recaptcha.toHTML()
+                    recaptcha: options.recaptcha.publicKey
                 });
             }
 
@@ -42,7 +40,8 @@ export class Index {
                 status: 400,
                 data: {
 
-                }
+                },
+                recaptcha: options.recaptcha.publicKey
             };
 
             let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip || null;
@@ -59,8 +58,6 @@ export class Index {
                     options.recaptcha.privateKey,
                     data
                 );
-
-                responseObj.recaptcha = captcha.toHTML();
 
                 let sucess = await captcha.verify();
 
