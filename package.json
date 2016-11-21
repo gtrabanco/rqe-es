@@ -1,6 +1,6 @@
 {
   "name": "req-ts",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0",
   "description": "Shorten URL's code for rqe.es",
   "main": "bin/www",
   "scripts": {
