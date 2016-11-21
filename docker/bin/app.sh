@@ -12,6 +12,7 @@ export DOCKER_IMAGE=gtrabanco/rqe-es
 export IMAGE_TAG=latest
 export CONTAINER_RAM=512M
 export DOCKER_BIN=/usr/bin/docker
+export CONFIG_FILE=config/index.js
 
 
 export CONTAINER_NAME="$1_$2"
@@ -28,5 +29,6 @@ $DOCKER_BIN pull $DOCKER_IMAGE:$IMAGE_TAG
 $DOCKER_BIN run -d --restart on-failure:5 -m $CONTAINER_RAM --memory-swap 0 -p $CONTAINER_PORT:$APP_PORT \
     --name $CONTAINER_NAME \
     --security-opt=no-new-privileges \
-    --link $CONTAINER_LINK:$LINK_NAME\
+    --link $CONTAINER_LINK:$LINK_NAME \
+    -v $CONFIG_FILE:/usr/src/app/config/index.js \
     $DOCKER_IMAGE:$IMAGE_TAG
