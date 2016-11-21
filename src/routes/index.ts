@@ -16,7 +16,7 @@ export class Index {
             let strId = req.params.strId;
 
             if(!strId || !checkValidStrId(strId)) {
-                return res.render('index');
+                return res.render('index', { recaptcha: options.recaptcha.publicKey });
             }
 
             try {
