@@ -42,7 +42,11 @@ export var options = {
         vhost: {}
     },
     alphabet: "abcdefhijkmnopqrsuvwxyzACBDEFHJKMNPQRSUVWXYZ123456789",
-    minLength: "4"
+    minLength: "4",
+    recaptcha: {
+        privateKey: "",
+        publicKey: ""
+    }
 };
 
 /*

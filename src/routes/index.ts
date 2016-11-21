@@ -1,16 +1,19 @@
 "use strict";
 
-import { Request, Response, NextFunction, Router } from "express";
+import { Request, Response, Router } from "express";
 import { Url, UrlModel } from '../models/url/model';
 import { URLValidator } from '../lib/url.validator';
 import { checkValidStrId } from '../lib/checkValidStrId';
-import {DocumentQuery} from "mongoose";
+import {options} from "../../config/index";
+var Recaptcha = require('node-recaptcha2').Recaptcha;
 
 
 
 export class Index {
     static routes():Router {
         return  Router().get('/:strId?', async (req:Request, res:Response) => {
+
+            let recaptcha = new Recaptcha(options.recaptcha.publicKey, options.recaptcha.privateKey);
 
             let strId = req.params.strId;
 
@@ -28,7 +31,8 @@ export class Index {
                     status: 400,
                     data: {
                         message: "There is no url fot the id \"" + strId + "\""
-                    }
+                    },
+                    recaptcha: recaptcha.toHTML()
                 });
             }
 
@@ -40,6 +44,31 @@ export class Index {
 
                 }
             };
+
+            let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.ip || null;
+            let code = req.body['g-recaptcha-response'] || '';
+            let data = {
+                remoteip: ip,
+                response: code
+            };
+
+            try {
+
+                let captcha = new Recaptcha(
+                    options.recaptcha.publicKey,
+                    options.recaptcha.privateKey,
+                    data
+                );
+
+                responseObj.recaptcha = captcha.toHTML();
+
+                let sucess = await captcha.verify();
+
+            } catch (e) {
+
+                responseObj.data.message = 'Invalid captcha';
+                return res.render('index', responseObj);
+            }
 
 
             if (!req.body.url || req.body.url.length <= 0 || !URLValidator(req.body.url)) {
