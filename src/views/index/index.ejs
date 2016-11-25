@@ -18,7 +18,7 @@
     <body>
     <a class="github-fork-ribbon right-top" href="https://github.com/gtrabanco/rqe-es" title="Fork me on GitHub">Fork me on GitHub</a>
     
-    <div class="page-header">
+    <div class="page-header col-md-10 col-xs-12">
         <header>
             <h1>RQE.es</h1>
             <h2>Simple url shortener with <a href="https://nodejs.org">Node</a>, <a href="https://www.mongodb.com/">MongoDB</a> and
@@ -26,7 +26,7 @@
         </header>
     </div>
 
-    <div class="col-sm-10 col-xs-12">
+    <div class="col-md-10 col-xs-12">
         <form action="/" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
 
             <% if(typeof status !== 'undefined' && status == 200) { %>
@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <label class="sr-only" for="url">Long Url:</label>
-                <div class="col-sm-8">
+                <div class="form-control">
                     <input type="text" placeholder="https://" id="url" name="url" class="form-control" aria-describedby="helpUrl">
                     <span id="helpUrl" class="help-block">You must write a valid url with http/https or ftp.</span>
                 </div>
