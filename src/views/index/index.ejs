@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Cutive+Mono&amp;subset=latin-ext" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.0/gh-fork-ribbon.min.css" />
     <!--[if lt IE 9]>
@@ -23,17 +26,12 @@
         </header>
     </div>
 
-    <div class="col-md-12">
+    <div class="jumbotron">
         <form action="/" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
-            <input type="text" placeholder="https://" name="url">
-            <% if (recaptcha) { %>
-            <div class="g-recaptcha" data-sitekey="<%= recaptcha %>"></div>
-            <% } %>
-            <input type="submit" value="Shot it!">
 
             <% if(typeof status !== 'undefined' && status == 200) { %>
             <div class="alert alert-success">
-                <p>Shortened URL: <%= data.url %></p>
+                <p>Short URL: <a href="<%= data.url %>"><%= data.url %></a></p>
             </div>
             <% } %>
 
@@ -42,6 +40,29 @@
                 <p>Error: <%= data.message %></p>
             </div>
             <% } %>
+
+            <div class="form-group">
+                <label class="sr-only" for="url">Long Url:</label>
+                <div class="col-sm-8">
+                    <input type="text" placeholder="https://" id="url" name="url" class="form-control" aria-describedby="helpUrl">
+                </div>
+                <span id="helpUrl" class="help-block">You must write a valid url with http/https or ftp.</span>
+            </div>
+
+            <% if (recaptcha) { %>
+            <div class="form-group">
+                <label class="sr-only" for="g-recaptcha">Check that you are a human user:</label>
+                <div class="form-control">
+                    <div id="g-recaptcha" class="g-recaptcha" data-sitekey="<%= recaptcha %>"></div>
+                </div>
+            </div>
+            <% } %>
+
+            <div class="form-group">
+                <input type="submit" value="Short it!" class="btn btn-primary">Short it!</input>
+            </div>
+
+
         </form>
     </body>
     </div>
