@@ -43,18 +43,14 @@
 
             <div class="form-group">
                 <label class="sr-only" for="url">Long Url:</label>
-                <div class="form-control">
-                    <input type="text" placeholder="https://" id="url" name="url" class="form-control" aria-describedby="helpUrl">
-                    <span id="helpUrl" class="help-block">You must write a valid url with http/https or ftp.</span>
-                </div>
+                <input type="text" placeholder="https://" id="url" name="url" class="form-control" aria-describedby="helpUrl">
+                <span id="helpUrl" class="help-block">You must write a valid url with http/https or ftp.</span>
             </div>
 
             <% if (recaptcha) { %>
             <div class="form-group">
                 <label class="sr-only" for="g-recaptcha">Check that you are a human user:</label>
-                <div class="form-control">
-                    <div id="g-recaptcha" class="g-recaptcha" data-sitekey="<%= recaptcha %>"></div>
-                </div>
+                <div id="g-recaptcha" class="g-recaptcha" data-sitekey="<%= recaptcha %>"></div>
             </div>
             <% } %>
 
