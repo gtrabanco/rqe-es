@@ -7,3 +7,5 @@ typings
 _*
 *_
 **.log
+data/db/*.*
+data/db/*/*

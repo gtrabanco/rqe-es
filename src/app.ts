@@ -95,11 +95,6 @@ class Server {
         this.app.use(express.static(path.join(__dirname, "..", "public")));
         this.app.use(express.static(path.join(__dirname, "..", "bower_components")));
 
-        this.app.use(function (req, res, next) {
-            console.log(req);
-            return next();
-        });
-
         // catch 404 and forward to error handler
         this.app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
             var error = new Error("Not Found");
