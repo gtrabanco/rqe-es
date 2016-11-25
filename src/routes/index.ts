@@ -63,7 +63,7 @@ export class Index {
 
             } catch (e) {
 
-                responseObj.data.message = 'Invalid captcha';
+                responseObj.data = { message: 'Invalid Captcha.'};
                 return res.render('index', responseObj);
             }
 
