@@ -93,7 +93,7 @@ class Server {
 
         //add static paths
         this.app.use(express.static(path.join(__dirname, "public")));
-        this.app.use(express.static(path.join(__dirname, "bower_components")));
+        this.app.use(express.static(path.join(__dirname, "..", "bower_components")));
 
         this.app.use(function (req, res, next) {
             console.log(req);
